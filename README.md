@@ -5,4 +5,4 @@ Tasks:
 3. delete student from the list
 4. switch student by previous and next buttons
 
-<img stc="screens/main_menu.png" alt="main menu">
+
