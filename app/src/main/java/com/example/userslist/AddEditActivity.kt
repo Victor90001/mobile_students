@@ -1,0 +1,145 @@
+package com.example.userslist
+
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.text.Editable
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ToggleButton
+import androidx.activity.result.ActivityResult
+
+const val BUTTON_ADD = "com.example.userlist.add_button"
+const val BUTTON_EDIT = "com.example.userlist.edit_button"
+
+class AddEditActivity : AppCompatActivity() {
+    private lateinit var btnAccept: Button
+    private lateinit var btnDecline: Button
+
+    private lateinit var editSName: EditText
+    private lateinit var editFName: EditText
+    private lateinit var editPatronymic: EditText
+    private lateinit var editGroup: EditText
+    private lateinit var editSex: ToggleButton
+    private lateinit var editBirth: EditText
+
+    private var id:Int? =null
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_add_edit)
+
+        val button = intent?.getStringExtra("buttonType")
+        val bankEmpty = intent?.getBooleanExtra("bankIsEmpty",false)
+
+        btnDecline = findViewById(R.id.btnDecline)
+        btnAccept = findViewById(R.id.btnAccept)
+        editSName = findViewById(R.id.editSName)
+        editFName = findViewById(R.id.editFName)
+        editPatronymic = findViewById(R.id.editPatronymic)
+        editGroup = findViewById(R.id.editGroup)
+        editSex = findViewById(R.id.toggleSex)
+        editBirth = findViewById(R.id.editTextDate)
+        if (bankEmpty == true){
+            btnDecline.visibility = View.GONE
+        }
+        if (button == "Edit"){
+            id = intent?.getIntExtra("id", Int.MIN_VALUE)
+            val student = intent?.getStringArrayExtra("CurStudent")
+            editSName.setText(student!![0])
+            editFName.setText(student[1])
+            editPatronymic.setText(student[2])
+            editGroup.setText(student[3])
+            if (student[4] == "Женщина"){
+                editSex.toggle()
+            }
+            editBirth.setText(student[5])
+        }
+        btnAccept.setOnClickListener{
+            returnAccept(id, button)
+        }
+        btnDecline.setOnClickListener{
+            returnDecline()
+        }
+    }
+    private fun checkErrors():Boolean{
+        var error = false
+        if(editSName.text.isBlank()){
+            editSName.error = "Введите фамилию"
+            error = true
+        }
+        if(editFName.text.isBlank()) {
+            editFName.error = "Введите имя"
+            error = true
+        }
+        if(editGroup.text.isBlank()){
+            editGroup.error = "Введите группу"
+            error = true
+        }
+        if(editBirth.text.isBlank()){
+            editBirth.error = "Введите дату рождения"
+            error = true
+        }
+        return error
+    }
+    private fun returnAccept(id: Int?,btnType: String?){
+        if (checkErrors())
+            return
+        val data=Intent()
+        if (btnType == "Add"){
+            data.apply {
+                putExtra(BUTTON_ADD, true)
+                putExtra(BUTTON_EDIT, false)
+                putExtra("Student", arrayOf(
+                    editSName.text.toString(),
+                    editFName.text.toString(),
+                    editPatronymic.text.toString(),
+                    editGroup.text.toString(),
+                    editSex.text.toString(),
+                    editBirth.text.toString()
+                ))
+            }
+        } else {
+            data.apply {
+                putExtra(BUTTON_ADD, false)
+                putExtra(BUTTON_EDIT, true)
+                putExtra("id", id)
+                putExtra("Student", arrayOf(
+                    editSName.text.toString(),
+                    editFName.text.toString(),
+                    editPatronymic.text.toString(),
+                    editGroup.text.toString(),
+                    editSex.text.toString(),
+                    editBirth.text.toString()
+                ))
+            }
+        }
+        setResult(Activity.RESULT_OK, data)
+        finish()
+    }
+    private fun returnDecline(){
+        val data = Intent().apply {
+            putExtra(BUTTON_ADD, false)
+            putExtra(BUTTON_EDIT, false)
+        }
+        setResult(Activity.RESULT_CANCELED, data)
+        finish()
+    }
+    companion object{
+        fun newIntent(packageContext: Context, id: Int?,button: String, student: Array<String>?,bankEmpty: Boolean?): Intent{
+            return Intent(packageContext, AddEditActivity::class.java).apply {
+                putExtra("buttonType", button)
+                putExtra("id", id)
+                putExtra("CurStudent", student)
+                putExtra("bankIsEmpty", bankEmpty)
+            }
+        }
+    }
+}

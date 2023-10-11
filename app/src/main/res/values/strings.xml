@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">userslist</string>
+    <string name="male">Мужчина</string>
+    <string name="female">Женщина</string>
+</resources>

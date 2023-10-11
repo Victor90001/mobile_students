@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEditActivity">
+
+    <Button
+        android:id="@+id/btnAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Принять"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+    <Button
+        android:id="@+id/btnDecline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#F44336"
+        android:text="Отменить"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+    <EditText
+        android:id="@+id/editSName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editFName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/editSName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editSName"
+        app:layout_constraintTop_toBottomOf="@+id/editSName"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editPatronymic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/editFName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editFName"
+        app:layout_constraintTop_toBottomOf="@+id/editFName"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/editPatronymic"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editPatronymic"
+        app:layout_constraintTop_toBottomOf="@+id/editPatronymic"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ToggleButton
+        android:id="@+id/toggleSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="ToggleButton"
+        android:textOff="@string/male"
+        android:textOn="@string/female"
+        app:layout_constraintEnd_toEndOf="@+id/editGroup"
+        app:layout_constraintStart_toStartOf="@+id/editGroup"
+        app:layout_constraintTop_toBottomOf="@+id/editGroup" />
+
+    <TextView
+        android:id="@+id/tvSName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Фамилия"
+        app:layout_constraintBottom_toTopOf="@+id/editSName"
+        app:layout_constraintStart_toStartOf="@+id/editSName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.783" />
+
+    <TextView
+        android:id="@+id/tvFName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Имя"
+        app:layout_constraintBottom_toTopOf="@+id/editFName"
+        app:layout_constraintStart_toStartOf="@+id/editFName"
+        app:layout_constraintTop_toBottomOf="@+id/editSName" />
+
+    <TextView
+        android:id="@+id/tvPtronymic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Отчество"
+        app:layout_constraintBottom_toTopOf="@+id/editPatronymic"
+        app:layout_constraintStart_toStartOf="@+id/editPatronymic"
+        app:layout_constraintTop_toBottomOf="@+id/editFName" />
+
+    <TextView
+        android:id="@+id/tvGroupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Группа"
+        app:layout_constraintBottom_toTopOf="@+id/editGroup"
+        app:layout_constraintStart_toStartOf="@+id/editGroup"
+        app:layout_constraintTop_toBottomOf="@+id/editPatronymic" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="01.01.1900"
+        android:inputType="date"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/toggleSex"
+        app:layout_constraintStart_toStartOf="@+id/toggleSex"
+        app:layout_constraintTop_toBottomOf="@+id/toggleSex"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата рождения"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/toggleSex" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
