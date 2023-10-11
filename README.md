@@ -3,4 +3,6 @@ Tasks:
 1. append student to list
 2. edit student info
 3. delete student from the list
-4. switch student by previous and next buttons 
+4. switch student by previous and next buttons
+
+<img stc="screens/main_menu.png" alt="main menu">
