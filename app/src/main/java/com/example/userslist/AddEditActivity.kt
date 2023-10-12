@@ -9,6 +9,7 @@ import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.activity.result.ActivityResult
 
@@ -25,12 +26,9 @@ class AddEditActivity : AppCompatActivity() {
     private lateinit var editGroup: EditText
     private lateinit var editSex: ToggleButton
     private lateinit var editBirth: EditText
-
+    private lateinit var studentAdded: TextView
+    private lateinit var menuETList: List<EditText>
     private var id:Int? =null
-
-    override fun onBackPressed() {
-        //super.onBackPressed()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,20 +45,36 @@ class AddEditActivity : AppCompatActivity() {
         editGroup = findViewById(R.id.editGroup)
         editSex = findViewById(R.id.toggleSex)
         editBirth = findViewById(R.id.editTextDate)
+        studentAdded = findViewById(R.id.tvStudentAdded)
+        menuETList = listOf(
+            editSName,
+            editFName,
+            editPatronymic,
+            editGroup,
+            editBirth
+        )
         if (bankEmpty == true){
             btnDecline.visibility = View.GONE
         }
+
         if (button == "Edit"){
             id = intent?.getIntExtra("id", Int.MIN_VALUE)
             val student = intent?.getStringArrayExtra("CurStudent")
-            editSName.setText(student!![0])
-            editFName.setText(student[1])
-            editPatronymic.setText(student[2])
-            editGroup.setText(student[3])
-            if (student[4] == "Женщина"){
+            for(i in 0..4){
+                menuETList[i].setText(student!![i])
+            }
+            if (student!![4] == "Женщина"){
                 editSex.toggle()
             }
-            editBirth.setText(student[5])
+        }
+
+        val fcls = View.OnFocusChangeListener { _, hasFocus ->
+            if (hasFocus){
+                studentAdded.visibility = View.INVISIBLE
+            }
+        }
+        for(elem in menuETList){
+            elem.onFocusChangeListener = fcls
         }
         btnAccept.setOnClickListener{
             returnAccept(id, button)
@@ -68,6 +82,7 @@ class AddEditActivity : AppCompatActivity() {
         btnDecline.setOnClickListener{
             returnDecline()
         }
+
     }
     private fun checkErrors():Boolean{
         var error = false
@@ -89,6 +104,7 @@ class AddEditActivity : AppCompatActivity() {
         }
         return error
     }
+
     private fun returnAccept(id: Int?,btnType: String?){
         if (checkErrors())
             return
@@ -106,6 +122,11 @@ class AddEditActivity : AppCompatActivity() {
                     editBirth.text.toString()
                 ))
             }
+            for(i in 0..4){
+                menuETList[i].text.clear()
+                menuETList[i].clearFocus()
+            }
+            studentAdded.visibility = View.VISIBLE
         } else {
             data.apply {
                 putExtra(BUTTON_ADD, false)
@@ -122,8 +143,8 @@ class AddEditActivity : AppCompatActivity() {
             }
         }
         setResult(Activity.RESULT_OK, data)
-        finish()
     }
+
     private fun returnDecline(){
         val data = Intent().apply {
             putExtra(BUTTON_ADD, false)
@@ -132,6 +153,7 @@ class AddEditActivity : AppCompatActivity() {
         setResult(Activity.RESULT_CANCELED, data)
         finish()
     }
+
     companion object{
         fun newIntent(packageContext: Context, id: Int?,button: String, student: Array<String>?,bankEmpty: Boolean?): Intent{
             return Intent(packageContext, AddEditActivity::class.java).apply {

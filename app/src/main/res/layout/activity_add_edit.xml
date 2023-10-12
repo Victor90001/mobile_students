@@ -10,10 +10,10 @@
         android:id="@+id/btnAccept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="60dp"
         android:backgroundTint="#4CAF50"
-        android:text="Принять"
+        android:text="Сохранить"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
@@ -21,10 +21,11 @@
         android:id="@+id/btnDecline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="#F44336"
         android:text="Отменить"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
@@ -155,5 +156,16 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextDate"
         app:layout_constraintStart_toStartOf="@+id/editTextDate"
         app:layout_constraintTop_toBottomOf="@+id/toggleSex" />
+
+    <TextView
+        android:id="@+id/tvStudentAdded"
+        android:layout_width="211dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Студент добавлен"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/editTextDate"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
