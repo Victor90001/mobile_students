@@ -6,25 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/firstNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Имя"
-        app:layout_constraintBottom_toTopOf="@+id/tvFirstName"
-        app:layout_constraintStart_toStartOf="@+id/tvFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/tvSecondName" />
-
-    <TextView
-        android:id="@+id/tvGroup"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvPatronymic"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tvPatronymic"
-        app:layout_constraintTop_toBottomOf="@+id/tvPatronymic" />
-
     <ImageButton
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
@@ -50,10 +31,10 @@
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBirth"
+        app:layout_constraintTop_toBottomOf="@+id/tvSecondName"
         app:srcCompat="@android:drawable/ic_menu_add"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -80,97 +61,12 @@
 
     <TextView
         android:id="@+id/tvSecondName"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_width="223dp"
+        android:layout_height="355dp"
         android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvFirstName"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvSecondName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvSecondName"
-        app:layout_constraintTop_toBottomOf="@+id/tvSecondName" />
-
-    <TextView
-        android:id="@+id/tvPatronymic"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvFirstName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
-
-    <TextView
-        android:id="@+id/tvSex"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvGroup"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvGroup"
-        app:layout_constraintTop_toBottomOf="@+id/tvGroup" />
-
-    <TextView
-        android:id="@+id/tvBirth"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvSex"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvSex"
-        app:layout_constraintTop_toBottomOf="@+id/tvSex" />
-
-    <TextView
-        android:id="@+id/secondNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="Фамилия"
-        app:layout_constraintBottom_toTopOf="@+id/tvSecondName"
-        app:layout_constraintStart_toStartOf="@+id/tvSecondName" />
-
-    <TextView
-        android:id="@+id/patronymicLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Отчество"
-        app:layout_constraintBottom_toTopOf="@+id/tvPatronymic"
-        app:layout_constraintStart_toStartOf="@+id/tvPatronymic"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
-
-    <TextView
-        android:id="@+id/groupLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Группа"
-        app:layout_constraintBottom_toTopOf="@+id/tvGroup"
-        app:layout_constraintStart_toStartOf="@+id/tvGroup"
-        app:layout_constraintTop_toBottomOf="@+id/tvPatronymic" />
-
-    <TextView
-        android:id="@+id/sexLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Пол"
-        app:layout_constraintBottom_toTopOf="@+id/tvSex"
-        app:layout_constraintStart_toStartOf="@+id/tvSex"
-        app:layout_constraintTop_toBottomOf="@+id/tvGroup" />
-
-    <TextView
-        android:id="@+id/birthDateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Дата рождения"
-        app:layout_constraintBottom_toTopOf="@+id/tvBirth"
-        app:layout_constraintStart_toStartOf="@+id/tvBirth"
-        app:layout_constraintTop_toBottomOf="@+id/tvSex" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

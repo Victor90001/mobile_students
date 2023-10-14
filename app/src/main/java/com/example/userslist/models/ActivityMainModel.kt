@@ -21,8 +21,6 @@ class ActivityMainModel: ViewModel() {
             return SimpleDateFormat("dd.MM.yyyy").parse("01.01.1900")
         }
     }
-
-
     private var studentBank = arrayListOf(
         Student(1, "Мошняков","Виктор","Русланович","4ИТ","Мужчина","13.06.2002"),
         Student(2, "Иванова","Мария","Ивановна","3ИТ","Женщина","13.05.2002"),
@@ -67,5 +65,12 @@ class ActivityMainModel: ViewModel() {
     }
     fun studentBankIsEmpty():Boolean{
         return studentBank.isEmpty()
+    }
+    override fun toString():String{
+        val stud = studentBank[curId]
+        return "ФИО: ${stud.sName} ${stud.fName} ${stud.patronymic}\n" +
+                "Группа: ${stud.groupName}\n" +
+                "Пол: ${stud.sex}\n" +
+                "Дата рождения: ${stud.birthDate}\n"
     }
 }

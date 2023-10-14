@@ -24,11 +24,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnEdit: ImageButton
 
     private lateinit var tvSecondName: TextView
-    private lateinit var tvFirstName: TextView
-    private lateinit var tvPatronymic: TextView
-    private lateinit var tvSex: TextView
-    private lateinit var tvGroup: TextView
-    private lateinit var tvBirth: TextView
 
     private val viewModel: ActivityMainModel by lazy {
         var provider = ViewModelProvider(this)
@@ -48,11 +43,6 @@ class MainActivity : AppCompatActivity() {
         btnEdit = findViewById(R.id.btnEdit)
 
         tvSecondName = findViewById(R.id.tvSecondName)
-        tvFirstName = findViewById(R.id.tvFirstName)
-        tvPatronymic = findViewById(R.id.tvPatronymic)
-        tvGroup = findViewById(R.id.tvGroup)
-        tvSex = findViewById(R.id.tvSex)
-        tvBirth = findViewById(R.id.tvBirth)
 
         updateInfo()
 
@@ -102,8 +92,8 @@ class MainActivity : AppCompatActivity() {
                     viewModel.curStudent[1],
                     viewModel.curStudent[2],
                     viewModel.curStudent[3],
-                    viewModel.curStudent[4],
-                    viewModel.curStudent[5]
+                    viewModel.curStudent[5],
+                    viewModel.curStudent[4]
                 ),
                 viewModel.studentBankIsEmpty()
             )
@@ -119,12 +109,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateInfo(){
-        val listInfo = viewModel.curStudent
-        tvSecondName.text = listInfo[0]
-        tvFirstName.text = listInfo[1]
-        tvPatronymic.text = listInfo[2]
-        tvGroup.text = listInfo[3]
-        tvSex.text = listInfo[4]
-        tvBirth.text = listInfo[5]
+        tvSecondName.text = viewModel.toString()
     }
 }

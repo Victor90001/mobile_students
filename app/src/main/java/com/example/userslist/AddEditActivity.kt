@@ -1,15 +1,18 @@
 package com.example.userslist
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
+import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.activity.result.ActivityResult
 
@@ -28,14 +31,30 @@ class AddEditActivity : AppCompatActivity() {
     private lateinit var editBirth: EditText
     private lateinit var studentAdded: TextView
     private lateinit var menuETList: List<EditText>
+    private var bankEmpty: Boolean? = null
     private var id:Int? =null
+    private fun alertByBackKey(){
 
+    }
+    override fun onBackPressed() {
+        if (bankEmpty == true){
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Нет студентов")
+            builder.setMessage("Все студенты были удалены, добавте нового студента для работы с приложением")
+            builder.setPositiveButton(android.R.string.ok){ _, _ ->
+            }
+            val alertBox = builder.create()
+            alertBox.show()
+        }else{
+            super.onBackPressed()
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit)
 
         val button = intent?.getStringExtra("buttonType")
-        val bankEmpty = intent?.getBooleanExtra("bankIsEmpty",false)
+        bankEmpty = intent?.getBooleanExtra("bankIsEmpty",false)
 
         btnDecline = findViewById(R.id.btnDecline)
         btnAccept = findViewById(R.id.btnAccept)
@@ -63,7 +82,7 @@ class AddEditActivity : AppCompatActivity() {
             for(i in 0..4){
                 menuETList[i].setText(student!![i])
             }
-            if (student!![4] == "Женщина"){
+            if (student!![5] == "Женщина"){
                 editSex.toggle()
             }
         }
@@ -73,6 +92,10 @@ class AddEditActivity : AppCompatActivity() {
                 studentAdded.visibility = View.INVISIBLE
             }
         }
+        val cls = View.OnClickListener {
+            studentAdded.visibility = View.INVISIBLE
+        }
+        editSex.setOnClickListener(cls)
         for(elem in menuETList){
             elem.onFocusChangeListener = fcls
         }
@@ -126,7 +149,10 @@ class AddEditActivity : AppCompatActivity() {
                 menuETList[i].text.clear()
                 menuETList[i].clearFocus()
             }
+            if (editSex.text.toString() == "Женщина")
+                editSex.toggle()
             studentAdded.visibility = View.VISIBLE
+            bankEmpty = false
         } else {
             data.apply {
                 putExtra(BUTTON_ADD, false)
@@ -141,6 +167,8 @@ class AddEditActivity : AppCompatActivity() {
                     editBirth.text.toString()
                 ))
             }
+            studentAdded.text = "Информация о студенте была изменена"
+            studentAdded.visibility = View.VISIBLE
         }
         setResult(Activity.RESULT_OK, data)
     }
