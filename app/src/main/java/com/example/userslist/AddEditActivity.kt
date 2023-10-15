@@ -15,6 +15,8 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.activity.result.ActivityResult
+import androidx.lifecycle.ViewModelProvider
+import com.example.userslist.models.ActivityMainModel
 
 const val BUTTON_ADD = "com.example.userlist.add_button"
 const val BUTTON_EDIT = "com.example.userlist.edit_button"
@@ -33,9 +35,12 @@ class AddEditActivity : AppCompatActivity() {
     private lateinit var menuETList: List<EditText>
     private var bankEmpty: Boolean? = null
     private var id:Int? =null
-    private fun alertByBackKey(){
 
-    }
+//    private val viewModel: ActivityMainModel by lazy{
+//        var provider = ViewModelProvider(this)
+//        provider[ActivityMainModel::class.java]
+//    }
+
     override fun onBackPressed() {
         if (bankEmpty == true){
             val builder = AlertDialog.Builder(this)
@@ -146,11 +151,11 @@ class AddEditActivity : AppCompatActivity() {
                 ))
             }
             for(i in 0..4){
-                menuETList[i].text.clear()
+//                menuETList[i].text.clear()
                 menuETList[i].clearFocus()
             }
-            if (editSex.text.toString() == "Женщина")
-                editSex.toggle()
+//            if (editSex.text.toString() == "Женщина")
+//                editSex.toggle()
             studentAdded.visibility = View.VISIBLE
             bankEmpty = false
         } else {
