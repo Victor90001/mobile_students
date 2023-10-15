@@ -102,9 +102,9 @@ class AddEditActivity : AppCompatActivity() {
         btnAccept.setOnClickListener{
             returnAccept(id, button)
         }
-        btnDecline.setOnClickListener{
-            returnDecline()
-        }
+//        btnDecline.setOnClickListener{
+//            returnDecline()
+//        }
 
     }
     private fun checkErrors():Boolean{
@@ -173,14 +173,14 @@ class AddEditActivity : AppCompatActivity() {
         setResult(Activity.RESULT_OK, data)
     }
 
-    private fun returnDecline(){
-        val data = Intent().apply {
-            putExtra(BUTTON_ADD, false)
-            putExtra(BUTTON_EDIT, false)
-        }
-        setResult(Activity.RESULT_CANCELED, data)
-        finish()
-    }
+//    private fun returnDecline(){
+//        val data = Intent().apply {
+//            putExtra(BUTTON_ADD, false)
+//            putExtra(BUTTON_EDIT, false)
+//        }
+//        setResult(Activity.RESULT_CANCELED, data)
+//        finish()
+//    }
 
     companion object{
         fun newIntent(packageContext: Context, id: Int?,button: String, student: Array<String>?,bankEmpty: Boolean?): Intent{
